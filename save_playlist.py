@@ -32,8 +32,9 @@ else:
 # get all songs from one playlist and store in variable
 # spotify:user:spotify:playlist:ENTER_SOURCE_PLAYLIST_ID
 # my "tastebreakers" to get songs from
-source_playlist_id = cfg.spotify['source_playlist']
+source_playlist_id = input("Copy and paste source playlist's ID: ")
 source_playlist = sp.user_playlist(username, source_playlist_id)
+print("Using '" + source_playlist['name'] + "' as source playlist.")
 tracks = source_playlist['tracks']
 songs = tracks["items"]
 
@@ -46,12 +47,12 @@ for i in range(0, len(songs)):
     # print(track_ids[i])
 
 # put all songs into playlist I've created
-# spotify:user:ENTER_USER_ID:playlist:ENTER_MY_PLAYLIST_ID
-# the playlist to put songs into
-my_playlist_id = cfg.spotify['my_playlist']
+created_name = input("Please enter your new playlist's name: ")
+my_playlist = sp.user_playlist_create(username, name=created_name)
+print("Playlist " + created_name + " has been created.")
 sp.user_playlist_add_tracks(
     username,
-    playlist_id=my_playlist_id,
+    playlist_id=my_playlist['id'],
     tracks=track_ids
 )
 print("We've added all the songs from the source playlist to your selected playlist")
