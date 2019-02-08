@@ -5,7 +5,9 @@ I created this because my Tastebreakers playlist from 2018 was so good that I wa
 
 ## Getting Started
 
-After forking, the only thing that is needed is the `spotify_credentials.py` file.  
+After forking you'll need to `pip install spotipy`
+ 
+You'll also need to create a `spotify_credentials.py` file.  
 It is a simple file that only has your credentials held in an object that the script calls to verify your profile.
 ```
 spotify = {
